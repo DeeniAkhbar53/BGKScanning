@@ -127,10 +127,10 @@
             var messageContainer = document.getElementById('messageContainer');
             messageContainer.innerHTML = '<div class="' + messageType + '">' + message + '</div>';
 
-            // Clear the message after 3 seconds
+            // Clear the message after 10 seconds
             setTimeout(function () {
                 messageContainer.innerHTML = '';
-            }, 3000);
+            }, 10000);
         }
     </script>
 </body>
