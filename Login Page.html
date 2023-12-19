@@ -1,0 +1,137 @@
+<!-- login.html -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Cambria', sans-serif;
+            background: url('https://www.its52.org/imgs/1436/1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            text-align: left;
+            display: block;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #104570;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0d355d;
+        }
+
+        .message-container {
+            margin-top: 15px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .warning-message {
+            background-color: #FF5050;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .success-message {
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" />
+            <label for="password">Password:</label>
+            <input type="password" id="password" />
+            <button onclick="login()">Login</button>
+        </form>
+        <div class="message-container" id="messageContainer"></div>
+    </div>
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var messageContainer = document.getElementById('messageContainer');
+
+            // Example simple login logic (replace with your authentication mechanism)
+            var validCredentials = [
+                { username: 'user1', password: 'pass1' },
+                { username: 'user2', password: 'pass2' },
+                // Add more username-password pairs as needed
+            ];
+
+            var isValid = validCredentials.some(function (cred) {
+                return cred.username === username && cred.password === password;
+            });
+
+            if (isValid) {
+                // Redirect to the attendance system page after successful login
+                window.location.href = 'attendance.html';
+            } else {
+                displayMessage('Invalid username or password', 'warning-message');
+            }
+        }
+
+        function displayMessage(message, messageType) {
+            var messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = '<div class="' + messageType + '">' + message + '</div>';
+
+            // Clear the message after 3 seconds
+            setTimeout(function () {
+                messageContainer.innerHTML = '';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
